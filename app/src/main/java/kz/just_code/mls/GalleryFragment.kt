@@ -22,7 +22,6 @@ class GalleryFragment : BaseFragment<FragmentGalleryBinding>(FragmentGalleryBind
 
 
 
-    private val args: GalleryFragmentArgs by navArgs()
 
     override fun onBindView() {
         super.onBindView()
