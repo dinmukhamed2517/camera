@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/gallery"
+        android:title="Gallery"
+        android:icon="@drawable/ic_gallery"
+        />
+    <item
+        android:id="@+id/camera"
+        android:title="Camera"
+        android:icon="@drawable/ic_camera"
+        />
+    <item
+        android:id="@+id/audio"
+        android:title="Audio"
+        android:icon="@drawable/ic_audio"
+        />
+    <item
+        android:id="@+id/location"
+        android:title="Location"
+        android:icon="@drawable/ic_location"
+        />
+</menu>

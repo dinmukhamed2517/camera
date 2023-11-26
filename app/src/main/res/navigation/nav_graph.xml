@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/audio">
+
+    <fragment
+        android:id="@+id/audio"
+        android:name="kz.just_code.mls.AudioFragment"
+        android:label="AudioFragment" />
+    <fragment
+        android:id="@+id/camera"
+        android:name="kz.just_code.mls.CameraFragment"
+        android:label="CameraFragment" >
+        <action
+            android:id="@+id/action_camera_to_gallery"
+            app:destination="@id/gallery" />
+    </fragment>
+    <fragment
+        android:id="@+id/location"
+        android:name="kz.just_code.mls.LocationFragment"
+        android:label="LocationFragment" />
+    <fragment
+        android:id="@+id/gallery"
+        android:name="kz.just_code.mls.GalleryFragment"
+        android:label="GalleryFragment" >
+
+        <argument
+            android:name="bitmap"
+            app:argType="string" />
+    </fragment>
+</navigation>
