@@ -20,11 +20,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Location: "
-        android:textSize="18sp" /> <Button
+        android:textSize="18sp" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Kazakhstan, Almaty, Bostandykski, Satbaeva 22"
+        />
+    <Button
     android:id="@+id/refreshButton"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:text="Refresh Location"
     android:layout_marginTop="500dp" />
+
+
+
 
 </LinearLayout>

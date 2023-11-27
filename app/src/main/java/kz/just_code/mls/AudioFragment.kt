@@ -2,21 +2,17 @@ package kz.just_code.mls
 
 import android.app.Activity
 import android.content.Intent
-import android.media.MediaPlayer
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
 import android.view.View
-import android.widget.Button
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import kz.just_code.mls.databinding.FragmentAudioBinding
-import java.io.IOException
 
 class AudioFragment : Fragment(R.layout.fragment_audio) {
 
     private lateinit var binding: FragmentAudioBinding
-    private var mediaPlayer: MediaPlayer? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -29,57 +25,37 @@ class AudioFragment : Fragment(R.layout.fragment_audio) {
                     // Enable buttons since a file is selected
                     enableButtons()
 
-                    // Play the audio file
-                    playAudio(fileUri)
+                    // Play the video file
+                    playVideo(fileUri)
                 }
             }
         }
 
         binding.pickFileButton.setOnClickListener {
-            val intent = Intent(Intent.ACTION_PICK, MediaStore.Audio.Media.EXTERNAL_CONTENT_URI)
+            val intent = Intent(Intent.ACTION_PICK, MediaStore.Video.Media.EXTERNAL_CONTENT_URI)
             pickFileLauncher.launch(intent)
         }
 
         binding.playButton.setOnClickListener {
-            mediaPlayer?.start()
+            binding.videoView.start()
         }
 
         binding.pauseButton.setOnClickListener {
-            mediaPlayer?.pause()
+            binding.videoView.pause()
         }
 
         binding.stopButton.setOnClickListener {
-            mediaPlayer?.stop()
-            // Reset the MediaPlayer to its uninitialized state
-            mediaPlayer?.reset()
+            binding.videoView.stopPlayback()
             // Disable buttons after stopping playback
             disableButtons()
         }
     }
 
-    private fun playAudio(audioUri: Uri) {
-        releaseMediaPlayer()
-
-        try {
-            mediaPlayer = MediaPlayer().apply {
-                setDataSource(requireContext(), audioUri)
-                prepare()
-                start()
-            }
-        } catch (e: IOException) {
-            // Handle the exception
-            e.printStackTrace()
-        }
-    }
-
-    private fun releaseMediaPlayer() {
-        mediaPlayer?.apply {
-            if (isPlaying) {
-                stop()
-            }
-            release()
-        }
-        mediaPlayer = null
+    private fun playVideo(videoUri: Uri) {
+        // Set the URI of the video to be played
+        binding.videoView.setVideoURI(videoUri)
+        // Start playing the video
+        binding.videoView.start()
     }
 
     private fun enableButtons() {
@@ -92,10 +68,5 @@ class AudioFragment : Fragment(R.layout.fragment_audio) {
         binding.playButton.isEnabled = false
         binding.pauseButton.isEnabled = false
         binding.stopButton.isEnabled = false
-    }
-
-    override fun onStop() {
-        super.onStop()
-        releaseMediaPlayer()
     }
 }
