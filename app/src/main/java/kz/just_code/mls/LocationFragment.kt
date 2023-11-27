@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -17,6 +18,7 @@ class LocationFragment : Fragment() {
 
     private lateinit var fusedLocationClient: FusedLocationProviderClient
     private lateinit var locationTextView: TextView
+    private lateinit var refreshButton: Button
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,6 +29,12 @@ class LocationFragment : Fragment() {
         locationTextView = view.findViewById(R.id.locationTextView)
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireActivity())
+        refreshButton = view.findViewById(R.id.refreshButton)
+
+
+        refreshButton.setOnClickListener {
+            requestLocation()
+        }
 
         return view
     }

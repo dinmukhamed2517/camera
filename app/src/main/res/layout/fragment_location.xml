@@ -20,6 +20,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Location: "
-        android:textSize="18sp" />
+        android:textSize="18sp" /> <Button
+    android:id="@+id/refreshButton"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Refresh Location"
+    android:layout_marginTop="500dp" />
 
 </LinearLayout>
